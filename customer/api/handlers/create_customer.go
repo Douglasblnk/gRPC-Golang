@@ -3,7 +3,6 @@ package handlers
 import (
 	"customer/api/schemas"
 	"customer/internal/services"
-	"fmt"
 
 	"customer/api/utils"
 
@@ -20,7 +19,6 @@ func CreateCustomerHandler(c *fiber.Ctx) error {
 	customer, err := services.CreateCustomer(customerSchema)
 
 	if err != nil {
-		fmt.Println("err", err)
 		return c.Status(fiber.StatusBadRequest).JSON(err)
 	}
 
