@@ -2,15 +2,14 @@ package services
 
 import (
 	"customer/api/schemas"
-	"customer/internal/exceptions"
 	"customer/internal/models"
 	"customer/internal/repository"
 )
 
-func UpdateCustomer(data *schemas.UpdateCustomer) (*models.Customer, error) {
-	customer, err := repository.FindCustomerByEmail(*data.Email)
+func UpdateCustomer(id string, data *schemas.UpdateCustomer) (*models.Customer, error) {
+	customer, err := repository.FindCustomerByID(id)
 
-	if err != nil && err != exceptions.ErrCustomerNotFound {
+	if err != nil {
 		return nil, err
 	}
 
