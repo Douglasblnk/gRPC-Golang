@@ -17,5 +17,5 @@ func InitServer() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Listening in port 3000")
+	fmt.Println("Listening in port 3010")
 }
