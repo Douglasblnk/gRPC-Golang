@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "proto/aaa";
+
+service CustomerService {
+  rpc GetCustomer(CustomerRequest) returns (CustomerResponse) {}
+}
+
+message CustomerRequest { string id = 1; }
+
+message CustomerResponse {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+}
