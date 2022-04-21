@@ -10,12 +10,13 @@ import (
 
 func UpdateCustomerHandler(c *fiber.Ctx) error {
 	customerSchema := new(schemas.UpdateCustomer)
+	id := c.Params("id")
 
 	if err := utils.GetBody(customerSchema, c); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(err)
 	}
 
-	customer, err := services.UpdateCustomer(customerSchema)
+	customer, err := services.UpdateCustomer(id, customerSchema)
 
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(err)
