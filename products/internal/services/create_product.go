@@ -1,10 +1,10 @@
 package services
 
 import (
-	"products/api/schemas"
-	"products/internal/exceptions"
-	"products/internal/models"
-	"products/internal/repository"
+	"microservice-poc/products/api/schemas"
+	"microservice-poc/products/internal/exceptions"
+	"microservice-poc/products/internal/models"
+	"microservice-poc/products/internal/repository"
 )
 
 func CreateProduct(data *schemas.CreateProduct) (*models.Product, error) {

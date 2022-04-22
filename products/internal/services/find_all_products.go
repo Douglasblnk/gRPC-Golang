@@ -1,8 +1,8 @@
 package services
 
 import (
-	"products/internal/models"
-	"products/internal/repository"
+	"microservice-poc/products/internal/models"
+	"microservice-poc/products/internal/repository"
 )
 
 func FindAllProducts() ([]*models.Product, error) {

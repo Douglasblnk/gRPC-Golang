@@ -1,7 +1,7 @@
 package services
 
 import (
-	"products/internal/repository"
+	"microservice-poc/products/internal/repository"
 )
 
 func DeleteProduct(id string) error {

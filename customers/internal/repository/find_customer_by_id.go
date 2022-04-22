@@ -1,9 +1,9 @@
 package repository
 
 import (
-	"customers/internal/database"
-	"customers/internal/exceptions"
-	"customers/internal/models"
+	"microservice-poc/customers/internal/database"
+	"microservice-poc/customers/internal/exceptions"
+	"microservice-poc/customers/internal/models"
 )
 
 func FindCustomerByID(id string) (*models.Customer, error) {

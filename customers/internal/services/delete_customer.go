@@ -1,7 +1,7 @@
 package services
 
 import (
-	"customers/internal/repository"
+	"microservice-poc/customers/internal/repository"
 )
 
 func DeleteCustomer(id string) error {

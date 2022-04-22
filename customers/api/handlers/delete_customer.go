@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"customers/internal/services"
+	"microservice-poc/customers/internal/services"
 
 	"github.com/gofiber/fiber/v2"
 )

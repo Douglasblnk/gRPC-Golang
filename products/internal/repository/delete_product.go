@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"products/internal/database"
-	"products/internal/models"
+	"microservice-poc/products/internal/database"
+	"microservice-poc/products/internal/models"
 )
 
 func DeleteProduct(product *models.Product) error {

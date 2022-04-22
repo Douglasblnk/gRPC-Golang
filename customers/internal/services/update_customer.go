@@ -1,9 +1,9 @@
 package services
 
 import (
-	"customers/api/schemas"
-	"customers/internal/models"
-	"customers/internal/repository"
+	"microservice-poc/customers/api/schemas"
+	"microservice-poc/customers/internal/models"
+	"microservice-poc/customers/internal/repository"
 )
 
 func UpdateCustomer(id string, data *schemas.UpdateCustomer) (*models.Customer, error) {

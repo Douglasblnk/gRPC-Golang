@@ -1,10 +1,10 @@
 package config
 
 import (
-	"customers/internal/services"
 	"log"
+	"microservice-poc/customers/internal/services"
+	pbcustomer "microservice-poc/proto"
 	"net"
-	pbcustomer "proto"
 
 	"google.golang.org/grpc"
 )

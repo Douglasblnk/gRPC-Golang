@@ -1,9 +1,9 @@
 package services
 
 import (
-	"customers/internal/models"
-	"customers/internal/repository"
-	pbcustomer "proto"
+	"microservice-poc/customers/internal/models"
+	"microservice-poc/customers/internal/repository"
+	pbcustomer "microservice-poc/proto"
 )
 
 type CustomerService struct {

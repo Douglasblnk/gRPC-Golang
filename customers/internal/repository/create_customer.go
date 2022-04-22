@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"customers/internal/database"
-	"customers/internal/models"
+	"microservice-poc/customers/internal/database"
+	"microservice-poc/customers/internal/models"
 )
 
 func CreateCustomer(customer *models.Customer) error {

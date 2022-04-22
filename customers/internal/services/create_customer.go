@@ -1,10 +1,10 @@
 package services
 
 import (
-	"customers/api/schemas"
-	"customers/internal/exceptions"
-	"customers/internal/models"
-	"customers/internal/repository"
+	"microservice-poc/customers/api/schemas"
+	"microservice-poc/customers/internal/exceptions"
+	"microservice-poc/customers/internal/models"
+	"microservice-poc/customers/internal/repository"
 )
 
 func CreateCustomer(data *schemas.CreateCustomer) (*models.Customer, error) {

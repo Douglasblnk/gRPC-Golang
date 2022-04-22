@@ -1,8 +1,8 @@
 package services
 
 import (
-	"customers/internal/models"
-	"customers/internal/repository"
+	"microservice-poc/customers/internal/models"
+	"microservice-poc/customers/internal/repository"
 )
 
 func FindAllCustomers() ([]*models.Customer, error) {

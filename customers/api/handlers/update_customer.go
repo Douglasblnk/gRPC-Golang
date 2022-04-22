@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"customers/api/schemas"
-	"customers/api/utils"
-	"customers/internal/services"
+	"microservice-poc/customers/api/schemas"
+	"microservice-poc/customers/api/utils"
+	"microservice-poc/customers/internal/services"
 
 	"github.com/gofiber/fiber/v2"
 )

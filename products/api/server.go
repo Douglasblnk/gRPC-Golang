@@ -3,7 +3,7 @@ package api
 import (
 	"fmt"
 	"log"
-	"products/api/routes"
+	"microservice-poc/products/api/routes"
 
 	"github.com/gofiber/fiber/v2"
 )

@@ -2,8 +2,8 @@ package main
 
 import (
 	"log"
-	"products/api"
-	"products/internal/database"
+	"microservice-poc/products/api"
+	"microservice-poc/products/internal/database"
 
 	"github.com/joho/godotenv"
 )

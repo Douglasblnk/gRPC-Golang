@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"customers/api/handlers"
+	"microservice-poc/customers/api/handlers"
 
 	"github.com/gofiber/fiber/v2"
 )

@@ -1,9 +1,9 @@
 package repository
 
 import (
-	"products/internal/database"
-	"products/internal/exceptions"
-	"products/internal/models"
+	"microservice-poc/products/internal/database"
+	"microservice-poc/products/internal/exceptions"
+	"microservice-poc/products/internal/models"
 )
 
 func FindProductByTitle(title string) (*models.Product, error) {
