@@ -1,7 +1,8 @@
 go 1.18
 
-use ./customer
-
-use ./products
-
-use ./order
+use (
+  ./customers
+  ./products
+  ./order
+  ./proto
+)

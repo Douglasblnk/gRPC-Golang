@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-option go_package = "proto/aaa";
+package pbcustomer;
+
+option go_package = "microservices/pbcustomer";
 
 service CustomerService {
   rpc GetCustomer(CustomerRequest) returns (CustomerResponse) {}

@@ -1,5 +1,5 @@
-customers:
-	cd customer && make dev
+customer:
+	cd customers && make dev
 
 product:
 	cd products && make dev

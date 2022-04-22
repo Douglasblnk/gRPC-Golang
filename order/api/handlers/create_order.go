@@ -10,13 +10,13 @@ import (
 )
 
 func CreateOrderHandler(c *fiber.Ctx) error {
-	productSchema := new(schemas.CreateOrder)
+	orderSchema := new(schemas.CreateOrder)
 
-	if err := utils.GetBody(productSchema, c); err != nil {
+	if err := utils.GetBody(orderSchema, c); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(err)
 	}
 
-	customer, err := services.CreateOrder(productSchema)
+	customer, err := services.CreateOrder(orderSchema)
 
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(err)
