@@ -1,21 +1,25 @@
 package services
 
 import (
-	"microservice-poc/customers/internal/models"
+	"context"
 	"microservice-poc/customers/internal/repository"
-	pbcustomer "microservice-poc/proto"
+	pb "microservice-poc/customers/proto"
 )
 
 type CustomerService struct {
-	pbcustomer.UnimplementedCustomerServiceServer
+	pb.CustomerServiceServer
 }
 
-func FindCustomer(id string) (*models.Customer, error) {
-	customer, err := repository.FindCustomerByID(id)
+func (cs *CustomerService) FindCustomer(ctx context.Context, data *pb.CustomerRequest) (*pb.CustomerResponse, error) {
+	customer, err := repository.FindCustomerByID(data.GetId())
 
 	if err != nil {
 		return nil, err
 	}
 
-	return customer, nil
+	return &pb.CustomerResponse{
+		Id:    customer.ID,
+		Name:  customer.Name,
+		Email: customer.Email,
+	}, nil
 }

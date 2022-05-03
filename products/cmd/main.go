@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"microservice-poc/products/api"
+	"microservice-poc/products/internal/config"
 	"microservice-poc/products/internal/database"
 
 	"github.com/joho/godotenv"
@@ -19,5 +20,6 @@ func init() {
 }
 
 func main() {
+	go config.InitgRPC()
 	api.InitServer()
 }

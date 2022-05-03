@@ -1,7 +1,9 @@
 package handlers
 
 import (
+	"microservice-poc/customers/api/utils"
 	"microservice-poc/customers/internal/services"
+	pb "microservice-poc/customers/proto"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -9,8 +11,17 @@ import (
 func FindCustomerHandler(c *fiber.Ctx) error {
 	id := c.Params("id")
 
-	// customerService := services.CustomerService{}
-	customer, err := services.FindCustomer(id)
+	ctx, cancel := utils.GetContext()
+
+	defer cancel()
+
+	customerService := services.CustomerService{}
+
+	dto := &pb.CustomerRequest{
+		Id: id,
+	}
+
+	customer, err := customerService.FindCustomer(ctx, dto)
 
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).SendString(err.Error())

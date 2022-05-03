@@ -7,7 +7,7 @@ import (
 )
 
 type Product struct {
-	ID        int            `gorm:"<-:false;primaryKey;autoIncrement;not null"`
+	ID        string         `gorm:"<-:false;primaryKey;autoIncrement;not null"`
 	Title     string         `gorm:"not null"`
 	Price     int            `gorm:"not null"`
 	CreatedAt time.Time      `gorm:"default:now();not null"`

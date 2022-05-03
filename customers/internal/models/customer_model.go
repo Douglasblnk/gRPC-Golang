@@ -7,7 +7,7 @@ import (
 )
 
 type Customer struct {
-	ID        int            `gorm:"<-:false;primaryKey;autoIncrement;not null"`
+	ID        string         `gorm:"<-:false;primaryKey;autoIncrement;not null"`
 	Name      string         `gorm:"not null"`
 	Email     string         `gorm:"not null"`
 	CreatedAt time.Time      `gorm:"default:now();not null"`
