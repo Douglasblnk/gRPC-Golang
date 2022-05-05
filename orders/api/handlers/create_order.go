@@ -9,27 +9,17 @@ import (
 )
 
 func CreateOrderHandler(c *fiber.Ctx) error {
-	orderSchema := new(schemas.CreateOrder)
+	orderSchema := new(schemas.Order)
 
-	customerId := c.Query("customerId")
-
-	if err := c.BodyParser(orderSchema); err != nil {
+	if err := utils.GetBody(orderSchema, c); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(err)
 	}
 
-	for _, order := range *orderSchema {
-		err := utils.ValidateStruct(order)
-
-		if err != nil {
-			return c.Status(fiber.StatusBadRequest).JSON(err)
-		}
-	}
-
-	customer, err := services.CreateOrder(customerId, orderSchema)
+	order, err := services.CreateOrder(orderSchema)
 
 	if err != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(err)
+		return fiber.NewError(fiber.StatusBadRequest, err.Error())
 	}
 
-	return c.Status(fiber.StatusCreated).JSON(customer)
+	return c.Status(fiber.StatusCreated).JSON(order)
 }

@@ -1,7 +1,7 @@
 package services
 
 import (
-	"microservice-poc/products/api/schemas"
+	"microservice-poc/products/api/rest/schemas"
 	"microservice-poc/products/internal/models"
 	"microservice-poc/products/internal/repository"
 )

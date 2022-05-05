@@ -7,12 +7,14 @@ import (
 )
 
 type Order struct {
-	ID         int            `gorm:"<-:false;primaryKey;autoIncrement;not null"`
-	CustomerID string         `gorm:"not null"`
-	CreatedAt  time.Time      `gorm:"default:now();not null"`
-	UpdatedAt  time.Time      `gorm:"default:now();not null"`
-	DeletedAt  gorm.DeletedAt ``
-	Items      []OrderItem
+	ID            int            `gorm:"<-:false;primaryKey;autoIncrement;not null"`
+	CustomerID    string         `gorm:"not null"`
+	CustomerName  string         `gorm:"not null"`
+	CustomerEmail string         `gorm:"not null"`
+	CreatedAt     time.Time      `gorm:"default:now();not null"`
+	UpdatedAt     time.Time      `gorm:"default:now();not null"`
+	DeletedAt     gorm.DeletedAt ``
+	Items         []OrderItem
 }
 
 type OrderItem struct {

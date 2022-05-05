@@ -7,8 +7,8 @@ import (
 )
 
 func SetUpRoutes(app *fiber.App) {
-	// app.Get("/:id", handlers.FindProductHandler)
-	// app.Get("/", handlers.FindAllProductsHandler)
+	app.Get("/:id", handlers.FindOrderHandler)
+	app.Get("/", handlers.FindAllOrdersHandler)
 	app.Post("/", handlers.CreateOrderHandler)
 	// app.Put("/:id", handlers.UpdateProductHandler)
 	// app.Delete("/:id", handlers.DeleteProductHandler)

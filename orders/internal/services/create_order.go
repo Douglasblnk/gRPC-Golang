@@ -1,18 +1,18 @@
 package services
 
 import (
-	"fmt"
 	"microservice-poc/orders/api/schemas"
+	"microservice-poc/orders/internal/exceptions"
 	"microservice-poc/orders/internal/integration"
 	"microservice-poc/orders/internal/models"
 	"microservice-poc/orders/internal/repository"
 	pb "microservice-poc/orders/proto"
 )
 
-func GetProduct(data *schemas.CreateOrder) ([]*pb.ProductResponse, error) {
+func getProduct(data *schemas.Order) ([]*pb.ProductResponse, error) {
 	var product []*pb.ProductResponse
 
-	for _, p := range *data {
+	for _, p := range data.Items {
 		prod, err := integration.GetProduct(p.ProductID)
 
 		if err != nil {
@@ -25,7 +25,7 @@ func GetProduct(data *schemas.CreateOrder) ([]*pb.ProductResponse, error) {
 	return product, nil
 }
 
-func MountProducts(products []*pb.ProductResponse) []models.OrderItem {
+func mountProducts(products []*pb.ProductResponse) []models.OrderItem {
 	items := []models.OrderItem{}
 
 	for _, product := range products {
@@ -37,25 +37,35 @@ func MountProducts(products []*pb.ProductResponse) []models.OrderItem {
 	return items
 }
 
-func CreateOrder(customerId string, data *schemas.CreateOrder) (*models.Order, error) {
-	customer, err := integration.GetCustomer(customerId)
+func CreateOrder(data *schemas.Order) (*models.Order, error) {
+	customer, err := integration.GetCustomer(data.CustomerID)
 
 	if err != nil {
 		return nil, err
 	}
 
-	product, err := GetProduct(data)
+	if customer == nil {
+		return nil, exceptions.ErrCustomerNotFound
+	}
+
+	products, err := getProduct(data)
 
 	if err != nil {
 		return nil, err
+	}
+
+	for _, product := range products {
+		if product == nil {
+			return nil, exceptions.ErrProductNotFound
+		}
 	}
 
 	order := &models.Order{
-		CustomerID: customer.Id,
-		Items:      MountProducts(product),
+		CustomerID:    customer.Id,
+		CustomerName:  customer.Name,
+		CustomerEmail: customer.Email,
+		Items:         mountProducts(products),
 	}
-
-	fmt.Println("order", order)
 
 	err = repository.CreateOrder(order)
 
@@ -63,5 +73,5 @@ func CreateOrder(customerId string, data *schemas.CreateOrder) (*models.Order, e
 		return nil, err
 	}
 
-	return nil, nil
+	return order, nil
 }

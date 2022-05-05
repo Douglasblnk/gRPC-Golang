@@ -1,27 +1,16 @@
 package services
 
 import (
-	"context"
+	"microservice-poc/products/internal/models"
 	"microservice-poc/products/internal/repository"
-	pb "microservice-poc/products/proto"
 )
 
-type ProductService struct {
-	pb.UnimplementedProductServiceServer
-}
-
-func (ps *ProductService) FindProduct(ctx context.Context, data *pb.ProductRequest) (*pb.ProductResponse, error) {
-	product, err := repository.FindProductByID(data.Id)
+func FindProduct(id string) (*models.Product, error) {
+	product, err := repository.FindProductByID(id)
 
 	if err != nil {
 		return nil, err
 	}
 
-	response := &pb.ProductResponse{
-		Id:    product.ID,
-		Title: product.Title,
-		Price: int32(product.Price),
-	}
-
-	return response, nil
+	return product, nil
 }

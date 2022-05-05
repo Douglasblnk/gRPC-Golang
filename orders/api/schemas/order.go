@@ -1,8 +1,13 @@
 package schemas
 
-type CreateOrder []struct {
+type Order struct {
+	CustomerID string     `json:"customerId" validate:"required"`
+	Items      OrderItems `json:"items" validate:"required"`
+}
+
+type OrderItems []struct {
 	Qtd       int    `json:"qtd" validate:"required"`
-	ProductID string `json:"productID" validate:"required"`
+	ProductID string `json:"productId" validate:"required"`
 }
 
 // type UpdateOrder struct {

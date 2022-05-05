@@ -1,8 +1,14 @@
-customer:
-	cd customers && make dev
+customer-rest:
+	cd customers && make rest
 
-product:
-	cd products && make dev
+customer-grpc:
+	cd customers && make grpc
+
+product-rest:
+	cd products && make rest
+
+product-grpc:
+	cd products && make grpc
 
 order:
 	cd orders && make dev
@@ -15,5 +21,3 @@ generate:
 	cp *.go ../orders/proto && \
 	cp *.go ../products/proto && \
 	rm *.go
-
-# protoc -I=. --go_out=./ proto/customer.proto
